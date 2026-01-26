@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Taco Recipes</title>
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+  </head>
+
+  <body>
+    <h1>Taco Town 🌮</h1>
+    <form action="/recipe" method="POST" class="buttons">
+      <button type="submit" value="chicken" name="choice">🍗</button>
+      <button type="submit" value="beef" name="choice">🥩</button>
+      <button type="submit" value="fish" name="choice">🐟</button>
+    </form>
+    <div id="recipeContainer" class="hidden">
+      <% if(!locals.recipe) { %>
+        <h2>Pick your favorite taco ingredient 👆</h2>
+      <% } else { %>
+        <% if(recipe?.name) { %>
+          <h2 class="recipeTitle"><%= recipe.name %></h2>
+        <% } %>
+        <h3>Ingredients:</h3>
+        <ul id="ingredientsList">
+          <% if(recipe?.ingredients?.protein?.name && recipe?.ingredients?.protein?.preparation) { %>
+            <li><%= `${recipe.ingredients.protein.name}, ${recipe.ingredients.protein.preparation}` %></li>
+          <% } %>
+          <% if(recipe?.ingredients?.salsa?.name) { %>
+            <li><%= recipe.ingredients.salsa.name %></li>
+          <% } %>
+          <% if(recipe?.ingredients?.toppings && recipe.ingredients.toppings.length > 0) { %>
+            <% recipe.ingredients.toppings.forEach((topping) => { %>
+              <% if(topping?.quantity && topping?.name) { %>
+                <li><%= `${topping.quantity} of ${topping.name}` %></li>
+              <% } %>
+            <% }) %>
+          <% } %>
+        </ul>
+      <% } %>
+    </div>
+  </body>
+</html>

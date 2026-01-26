@@ -1,0 +1,17 @@
+<%- include('./partials/header'); %>
+    <section>
+        <article>
+            <% if (locals.flashMessage) { %>
+                <div class="flashMessage <%= flashMessage['type'] %>">
+                    <%= flashMessage['message'] %>
+                </div>
+            <% } %>
+            <h2>Secrets</h2>
+            <form action="/check" method="POST">
+              <label for="password">Password:</label>
+              <input type="text" id="password" name="password" required>
+              <input type="submit" value="Submit">
+            </form>
+        </article>
+    </section>
+<%- include('./partials/footer'); %>

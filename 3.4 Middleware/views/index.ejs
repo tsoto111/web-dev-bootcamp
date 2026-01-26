@@ -1,0 +1,20 @@
+<%- include('./partials/header'); %>
+    <section>
+        <article>
+            <h2>Band Name Generator</h2>
+            <form action="/submit" method="post">
+                <div class="input-group">
+                    <label for="street-name">Street Name</label>
+                    <input type="text" name="street-name" />
+                </div>
+                <div class="input-group">
+                    <label for="pet-name">Pet Name</label>
+                    <input type="text" name="pet-name" />
+                </div>
+                <div>
+                    <input type="submit" />
+                </div>
+            </form>
+        </article>
+    </section>
+<%- include('./partials/footer'); %>
